@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CounterServiceTest {
@@ -26,11 +27,11 @@ class CounterServiceTest {
 
     @Test
     void intCounter() {
-        System.out.println(counterService.intCounter(intArray));
+        assertThat(counterService.intCounter(intArray)).isNotNull();
     }
 
     @Test
     void doubleCounter() {
-        System.out.println(counterService.doubleCounter(doubleArray));
+       assertThat(counterService.doubleCounter(doubleArray)).isNotNull();
     }
 }
