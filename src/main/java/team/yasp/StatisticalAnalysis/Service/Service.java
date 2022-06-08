@@ -1,18 +1,13 @@
 package team.yasp.StatisticalAnalysis.Service;
 
-import com.google.gson.Gson;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import team.yasp.StatisticalAnalysis.Json.ResponseJson;
 import team.yasp.StatisticalAnalysis.TopHits;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -26,14 +21,14 @@ public class Service {
         topHits = loadCSV();
     }
 
-    private List<TopHits> loadCSV() throws FileNotFoundException {
-        List<TopHits> topHits = new CsvToBeanBuilder(new FileReader("songs_normalize.csv"))
+    private List<TopHits> loadCSV() throws FileNotFoundException {   // метод загружет данные и парсит в лист
+        List<TopHits> topHits = new CsvToBeanBuilder(new FileReader("src/main/resources/songs_normalize.csv"))
                 .withType(TopHits.class)
                 .build().parse();
         return topHits;
     }
 
-    public ResponseEntity getDuration_ms(String year){
+    public ResponseEntity getDuration_ms(String year){      //методы обрабатывают
         int[] duration_msArray;
         if (year == null){
             duration_msArray = topHits.stream()
