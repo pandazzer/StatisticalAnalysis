@@ -28,7 +28,7 @@ public class Service {
         return topHits;
     }
 
-    public ResponseEntity getDuration_ms(String year){      //методы обрабатывают
+    public ResponseEntity getDuration_ms(String year){
         int[] duration_msArray;
         if (year == null){
             duration_msArray = topHits.stream()
